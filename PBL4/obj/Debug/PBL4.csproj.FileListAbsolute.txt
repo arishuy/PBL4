@@ -1,0 +1,11 @@
+C:\Users\admin\Desktop\PBL4\PBL4\bin\Debug\PBL4.exe.config
+C:\Users\admin\Desktop\PBL4\PBL4\bin\Debug\PBL4.exe
+C:\Users\admin\Desktop\PBL4\PBL4\bin\Debug\PBL4.pdb
+C:\Users\admin\Desktop\PBL4\PBL4\obj\Debug\PBL4.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\PBL4\PBL4\obj\Debug\PBL4.csproj.SuggestedBindingRedirects.cache
+C:\Users\admin\Desktop\PBL4\PBL4\obj\Debug\PBL4.Form1.resources
+C:\Users\admin\Desktop\PBL4\PBL4\obj\Debug\PBL4.Properties.Resources.resources
+C:\Users\admin\Desktop\PBL4\PBL4\obj\Debug\PBL4.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\PBL4\PBL4\obj\Debug\PBL4.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\PBL4\PBL4\obj\Debug\PBL4.exe
+C:\Users\admin\Desktop\PBL4\PBL4\obj\Debug\PBL4.pdb
