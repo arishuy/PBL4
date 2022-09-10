@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
+            this.lbStatus = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -104,14 +104,15 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Scan Network Address";
             // 
-            // lblStatus
+            // lbStatus
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(212, 394);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(40, 16);
-            this.lblStatus.TabIndex = 9;
-            this.lblStatus.Text = "None";
+            this.lbStatus.AutoSize = true;
+            this.lbStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbStatus.Location = new System.Drawing.Point(212, 394);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(40, 16);
+            this.lbStatus.TabIndex = 9;
+            this.lbStatus.Text = "None";
             // 
             // button3
             // 
@@ -221,7 +222,7 @@
             this.Controls.Add(this.lvResult);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.listView1);
@@ -247,7 +248,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
