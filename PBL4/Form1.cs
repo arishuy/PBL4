@@ -35,7 +35,7 @@ namespace PBL4
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string subnet = txtSubnet.Text;
+            string subnet = txtIP.Text.Substring(0, txtIP.Text.LastIndexOf("."));
             progressBar.Maximum = 254;
             progressBar.Value = 0;
             lvResult.Items.Clear();
@@ -58,7 +58,6 @@ namespace PBL4
                             }
                             catch
                             {
-                                MessageBox.Show($"Couldn't retrieve hostname from {ip}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             progressBar.Value += 1;
                             lblStatus.ForeColor = Color.Blue;
@@ -74,9 +73,10 @@ namespace PBL4
                             progressBar.Value += 1;
                             lblStatus.ForeColor = Color.DarkGray;
                             lblStatus.Text = $"Scanning: {ip}";
-                            lvResult.Items.Add(new ListViewItem(new String[] { ip, "", "Down" }));
+                            //lvResult.Items.Add(new ListViewItem(new String[] { ip, "", "Down" }));
                             if (progressBar.Value == 253)
-                            { lblStatus.Text = "Finished";
+                            {
+                                lblStatus.Text = "Finished";
                                 progressBar.Value = 0;
                             }
                         }));

@@ -34,7 +34,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtSubnet = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -88,7 +87,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(171, 383);
+            this.button2.Location = new System.Drawing.Point(65, 387);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
@@ -105,21 +104,14 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Scan Network Address";
             // 
-            // txtSubnet
-            // 
-            this.txtSubnet.Location = new System.Drawing.Point(65, 384);
-            this.txtSubnet.Name = "txtSubnet";
-            this.txtSubnet.Size = new System.Drawing.Size(100, 22);
-            this.txtSubnet.TabIndex = 8;
-            // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(314, 390);
+            this.lblStatus.Location = new System.Drawing.Point(212, 394);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(44, 16);
+            this.lblStatus.Size = new System.Drawing.Size(40, 16);
             this.lblStatus.TabIndex = 9;
-            this.lblStatus.Text = "label4";
+            this.lblStatus.Text = "None";
             // 
             // button3
             // 
@@ -214,7 +206,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(264, 390);
+            this.label5.Location = new System.Drawing.Point(162, 394);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 9;
@@ -230,7 +222,6 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.txtSubnet);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.listView1);
@@ -256,7 +247,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtSubnet;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListView listView1;
