@@ -41,10 +41,10 @@ namespace PBL4
             lvResult.Items.Clear();
             lbStatus.ForeColor = Color.Blue;
             lbStatus.Text = "Scanning...";
-            //Task.Factory.StartNew(new Action(() =>
-            //{
-            Parallel.For(2, 255, (i) =>
-            //for (int i = 2; i < 255; i++)
+            Task.Factory.StartNew(new Action(() =>
+            {
+                Parallel.For(2, 255, (i) =>
+                //for (int i = 2; i < 255; i++)
                 {
                     string ip = $"{subnet}.{i}";
                     Ping ping = new Ping();
@@ -60,8 +60,9 @@ namespace PBL4
                                 IPHostEntry host = Dns.GetHostEntry(IPAddress.Parse(ip));
                                 lvResult.Items.Add(new ListViewItem(new String[] { ip, host.HostName, "Active" }));
                             }
-                            catch
+                            catch (SocketException ex)
                             {
+                                lvResult.Items.Add(new ListViewItem(new String[] { ip, "Unknown", "Active" }));
                             }
                             progressBar.Value += 1;
 
@@ -79,7 +80,7 @@ namespace PBL4
                         {
                             progressBar.Value += 1;
 
-                            lvResult.Items.Add(new ListViewItem(new String[] { ip, "", "Down" }));
+                            //lvResult.Items.Add(new ListViewItem(new String[] { ip, "", "Down" }));
                             if (progressBar.Value == 253)
                             {
                                 lbStatus.ForeColor = Color.Green;
@@ -89,37 +90,7 @@ namespace PBL4
                         }));
                     }
                 });
-
-            //lbCount.Text = lvResult.Items.Count.ToString();
-
-            //}));
-            //try
-            //{
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        List<ListIP> result = new List<ListIP>();
-
-            //        Thread thread = new Thread(() =>
-            //        {
-            //            List<string> ips = new List<string>();
-
-            //            for (int j = (255 / 10) * i + 2; j < (255 / 10) * (i + 1) + 2; j++)
-            //            {
-            //                string ip = $"{subnet}.{j}";
-            //                ips.Add(ip);
-            //            }
-            //            PingThread pingThread = new PingThread(ips);
-            //            result.AddRange(pingThread.Run());
-            //            Console.WriteLine(result);
-
-            //        });
-
-            //        thread.Start();
-            //        lvResult.Items.AddRange(result.Select(x => new ListViewItem(new string[] { x.ip, x.hostname, x.status })).ToArray());
-
-            //    }
-            //}
-            //catch(Exception ex) { }
+            }));
         }
         private void button3_Click(object sender, EventArgs e)
         {
