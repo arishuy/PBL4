@@ -79,7 +79,7 @@ namespace PBL4
                         {
                             progressBar.Value += 1;
 
-                            //lvResult.Items.Add(new ListViewItem(new String[] { ip, "", "Down" }));
+                            lvResult.Items.Add(new ListViewItem(new String[] { ip, "", "Down" }));
                             if (progressBar.Value == 253)
                             {
                                 lbStatus.ForeColor = Color.Green;
