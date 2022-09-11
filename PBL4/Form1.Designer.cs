@@ -36,10 +36,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lbStatus = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvResult = new System.Windows.Forms.ListView();
             this.ip = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.hostname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -48,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
+            this.tbdns = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -116,38 +113,13 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(791, 292);
+            this.button3.Location = new System.Drawing.Point(683, 355);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 36);
             this.button3.TabIndex = 10;
-            this.button3.Text = "button3";
+            this.button3.Text = "DNS Query";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(711, 334);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(280, 138);
-            this.listView1.TabIndex = 4;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "IP";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Host Name";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Status";
             // 
             // lvResult
             // 
@@ -213,11 +185,21 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Status";
             // 
+            // tbdns
+            // 
+            this.tbdns.Location = new System.Drawing.Point(683, 139);
+            this.tbdns.Multiline = true;
+            this.tbdns.Name = "tbdns";
+            this.tbdns.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.tbdns.Size = new System.Drawing.Size(325, 210);
+            this.tbdns.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1020, 496);
+            this.ClientSize = new System.Drawing.Size(1088, 496);
+            this.Controls.Add(this.tbdns);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lvResult);
             this.Controls.Add(this.button3);
@@ -225,7 +207,6 @@
             this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -250,10 +231,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ListView lvResult;
         private System.Windows.Forms.ColumnHeader ip;
         private System.Windows.Forms.ColumnHeader hostname;
@@ -262,6 +239,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbdns;
     }
 }
 

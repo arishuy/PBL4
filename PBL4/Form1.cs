@@ -105,11 +105,14 @@ namespace PBL4
                 IPAddressCollection dnsServers = adapterProperties.DnsAddresses;
                 if (dnsServers.Count > 0)
                 {
-                    Console.WriteLine(adapter.Description);
+                    tbdns.Text+=adapter.Description;
+                    tbdns.Text += Environment.NewLine;
                     foreach (IPAddress dns in dnsServers)
                     {
                         Console.WriteLine("  DNS Servers ............................. : {0}",
                             dns.ToString());
+                        tbdns.Text += "  DNS Servers ............................. : " + dns.ToString();
+                        tbdns.Text += Environment.NewLine;
                     }
                     Console.WriteLine();
                 }
