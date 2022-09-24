@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PBL4
@@ -26,7 +20,7 @@ namespace PBL4
             listView1.Items.Clear();
             try
             {
-                foreach(TracertEntry tracertEntry in Tracert(textBox1.Text, 100, 100))
+                foreach (TracertEntry tracertEntry in Tracert(textBox1.Text, 100, 100))
                 {
                     listView1.Items.Add(new ListViewItem(new String[]
                     {
@@ -55,25 +49,25 @@ namespace PBL4
                 throw new ArgumentException("Max hops can't be lower than 1.");
 
             // Ensure that the timeout is not set to 0 or a negative number.
-            if (timeout < 1) throw new ArgumentException("Timeout value must be higher than 0."); 
-            Ping ping = new Ping(); 
-            PingOptions pingOptions = new PingOptions(1, true); 
-            Stopwatch pingReplyTime = new Stopwatch(); 
+            if (timeout < 1) throw new ArgumentException("Timeout value must be higher than 0.");
+            Ping ping = new Ping();
+            PingOptions pingOptions = new PingOptions(1, true);
+            Stopwatch pingReplyTime = new Stopwatch();
             PingReply reply;
             do
             {
-                pingReplyTime.Start(); 
-                reply = ping.Send(address, timeout, new byte[] { 0 }, pingOptions); 
-                pingReplyTime.Stop(); 
-                string hostname = string.Empty; 
+                pingReplyTime.Start();
+                reply = ping.Send(address, timeout, new byte[] { 0 }, pingOptions);
+                pingReplyTime.Stop();
+                string hostname = string.Empty;
                 if (reply.Address != null)
                 {
                     try
                     {
                         IPHostEntry ipHostInfo = Dns.GetHostEntry(IPAddress.Parse(reply.Address.ToString()));
                         hostname = ipHostInfo.HostName;
-                        Console.WriteLine(hostname);
-                                                                                                                                      
+                        //Console.WriteLine(hostname);
+
                     }
                     catch (SocketException) { /* No host available for that address. */ }
                 }

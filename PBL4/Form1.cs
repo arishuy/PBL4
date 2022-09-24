@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BrightIdeasSoftware;
+using System;
 using System.Drawing;
 using System.IO.Pipes;
 using System.Net;
@@ -30,14 +31,15 @@ namespace PBL4
                 PingReply PR = p1.Send(myping);
                 if (PR.Status == IPStatus.Success)
                 {
+                    label2.ForeColor = Color.Green;
                     label2.Text = "Ping to " + myping + " was successful";
                 }
                 else
                 {
+                label2.ForeColor = Color.Red;
+
                     label2.Text = "Ping to " + myping + " was unsuccessful";
                 }
-                label2.ForeColor = Color.Green;
-                //label2.Text = PR.Status.ToString();
                 p1.Dispose();
             }
             
@@ -61,7 +63,6 @@ namespace PBL4
                     Ping ping = new Ping();
                     PingOptions pingOptions = new PingOptions(1, true);
                     PingReply reply = ping.Send(ip, timeout, new byte[] { 0 }, pingOptions);
-
                     if (reply.Status == IPStatus.Success)
                     {
                         progressBar.BeginInvoke(new Action(() =>
@@ -107,7 +108,7 @@ namespace PBL4
         private void button3_Click(object sender, EventArgs e)
         {
 
-
+            tbdns.Text = "";
             //throw new InvalidOperationException("Unable to find DNS Address");
             NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();
             foreach (NetworkInterface adapter in adapters)
