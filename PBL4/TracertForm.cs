@@ -16,32 +16,36 @@ namespace PBL4
 {
     public partial class TracertForm : Form
     {
+        DataTable data;
         public TracertForm()
         {
             InitializeComponent();
+            data = new DataTable();
+            dataGridView1.DataSource = data;
+            data.Columns.AddRange(new DataColumn[] { new DataColumn("Hop ID"), new DataColumn("Address"), new DataColumn("Host Name"), new DataColumn("Reply Time"), new DataColumn("Reply status") });
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listView1.Items.Clear();
+            data.Rows.Clear();
             try
             {
-                foreach(TracertEntry tracertEntry in Tracert(textBox1.Text, 100, 100))
+                var progress = new Progress<TracertEntry>();
+                progress.ProgressChanged += (s, item) =>
                 {
-                    listView1.Items.Add(new ListViewItem(new String[]
-                    {
-                        tracertEntry.HopID.ToString(),
-                        tracertEntry.Address.ToString(),
-                        tracertEntry.Hostname.ToString(),
-                        tracertEntry.ReplyTime.ToString(),
-                        tracertEntry.ReplyStatus.ToString(),
-                    }));
-                }
+                    data.Rows.Add(item.HopID, item.Address, item.Hostname, item.ReplyTime, item.ReplyStatus);
+                };     
+                Task.Run(() => GetItemsAndReport(progress, textBox1.Text, 100, 100));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        void GetItemsAndReport(IProgress<TracertEntry> progress, string ipAddress, int maxHops, int timeout)
+        {
+            foreach (var item in Tracert( ipAddress, maxHops, timeout)) progress.Report(item);
         }
 
         private IEnumerable<TracertEntry> Tracert(string ipAddress, int maxHops, int timeout)
@@ -71,9 +75,7 @@ namespace PBL4
                     try
                     {
                         IPHostEntry ipHostInfo = Dns.GetHostEntry(IPAddress.Parse(reply.Address.ToString()));
-                        hostname = ipHostInfo.HostName;
-                        Console.WriteLine(hostname);
-                                                                                                                                      
+                        hostname = ipHostInfo.HostName;                                                                              
                     }
                     catch (SocketException) { /* No host available for that address. */ }
                 }
