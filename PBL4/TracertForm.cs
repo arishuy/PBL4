@@ -23,6 +23,7 @@ namespace PBL4
 
         private void button1_Click(object sender, EventArgs e)
         {
+            listView1.Items.Clear();
             try
             {
                 foreach(TracertEntry tracertEntry in Tracert(textBox1.Text, 100, 100))
@@ -69,7 +70,9 @@ namespace PBL4
                 {
                     try
                     {
-                        IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName()); hostname = ipHostInfo.HostName;                 
+                        IPHostEntry ipHostInfo = Dns.GetHostEntry(IPAddress.Parse(reply.Address.ToString()));
+                        hostname = ipHostInfo.HostName;
+                        Console.WriteLine(hostname);
                                                                                                                                       
                     }
                     catch (SocketException) { /* No host available for that address. */ }

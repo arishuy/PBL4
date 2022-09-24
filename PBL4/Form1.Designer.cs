@@ -45,6 +45,7 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
             this.tbdns = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -113,7 +114,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(683, 355);
+            this.button3.Location = new System.Drawing.Point(683, 432);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 36);
             this.button3.TabIndex = 10;
@@ -187,18 +188,30 @@
             // 
             // tbdns
             // 
+            this.tbdns.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbdns.Location = new System.Drawing.Point(683, 139);
             this.tbdns.Multiline = true;
             this.tbdns.Name = "tbdns";
-            this.tbdns.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.tbdns.Size = new System.Drawing.Size(325, 210);
+            this.tbdns.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbdns.Size = new System.Drawing.Size(325, 287);
             this.tbdns.TabIndex = 14;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(65, 445);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 15;
+            this.button4.Text = "Tracer";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 496);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.tbdns);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lvResult);
@@ -240,6 +253,7 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbdns;
+        private System.Windows.Forms.Button button4;
     }
 }
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Drawing;
+using System.IO.Pipes;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace PBL4
@@ -26,8 +28,16 @@ namespace PBL4
             {
                 Ping p1 = new Ping();
                 PingReply PR = p1.Send(myping);
+                if (PR.Status == IPStatus.Success)
+                {
+                    label2.Text = "Ping to " + myping + " was successful";
+                }
+                else
+                {
+                    label2.Text = "Ping to " + myping + " was unsuccessful";
+                }
                 label2.ForeColor = Color.Green;
-                label2.Text = PR.Status.ToString();
+                //label2.Text = PR.Status.ToString();
                 p1.Dispose();
             }
             
@@ -46,9 +56,11 @@ namespace PBL4
                 Parallel.For(2, 255, (i) =>
                 //for (int i = 2; i < 255; i++)
                 {
+                    int timeout = 500;
                     string ip = $"{subnet}.{i}";
                     Ping ping = new Ping();
-                    PingReply reply = ping.Send(ip, 100);
+                    PingOptions pingOptions = new PingOptions(1, true);
+                    PingReply reply = ping.Send(ip, timeout, new byte[] { 0 }, pingOptions);
 
                     if (reply.Status == IPStatus.Success)
                     {
@@ -109,9 +121,9 @@ namespace PBL4
                     tbdns.Text += Environment.NewLine;
                     foreach (IPAddress dns in dnsServers)
                     {
-                        Console.WriteLine("  DNS Servers ............................. : {0}",
+                        Console.WriteLine("  DNS Servers  : {0}",
                             dns.ToString());
-                        tbdns.Text += "  DNS Servers ............................. : " + dns.ToString();
+                        tbdns.Text += "  DNS Servers  : " + dns.ToString();
                         tbdns.Text += Environment.NewLine;
                     }
                     Console.WriteLine();
@@ -129,6 +141,12 @@ namespace PBL4
                     txtIP.Text = ip.ToString();
                 }
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            TracertForm tracert = new TracertForm();
+            tracert.Show();
         }
     }
 }

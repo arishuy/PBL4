@@ -30,12 +30,12 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.HopID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.HostName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ReplyTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ReplyStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -58,12 +58,41 @@
             this.ReplyStatus});
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(34, 60);
+            this.listView1.Location = new System.Drawing.Point(54, 53);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(757, 299);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // HopID
+            // 
+            this.HopID.Text = "HopID";
+            this.HopID.Width = 70;
+            // 
+            // Address
+            // 
+            this.Address.Text = "Address";
+            this.Address.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Address.Width = 141;
+            // 
+            // HostName
+            // 
+            this.HostName.Text = "HostName";
+            this.HostName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.HostName.Width = 165;
+            // 
+            // ReplyTime
+            // 
+            this.ReplyTime.Text = "ReplyTime";
+            this.ReplyTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ReplyTime.Width = 168;
+            // 
+            // ReplyStatus
+            // 
+            this.ReplyStatus.Text = "ReplyStatus";
+            this.ReplyStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ReplyStatus.Width = 210;
             // 
             // textBox1
             // 
@@ -71,26 +100,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(126, 22);
             this.textBox1.TabIndex = 2;
-            // 
-            // HopID
-            // 
-            this.HopID.Text = "HopID";
-            // 
-            // Address
-            // 
-            this.Address.Text = "Address";
-            // 
-            // HostName
-            // 
-            this.HostName.Text = "HostName";
-            // 
-            // ReplyTime
-            // 
-            this.ReplyTime.Text = "ReplyTime";
-            // 
-            // ReplyStatus
-            // 
-            this.ReplyStatus.Text = "ReplyStatus";
             // 
             // TracertForm
             // 
