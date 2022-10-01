@@ -69,29 +69,8 @@ namespace PBL4
         }
         private void button3_Click(object sender, EventArgs e)
         {
-
-            tbdns.Text = "";
-            //throw new InvalidOperationException("Unable to find DNS Address");
-            NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();
-            foreach (NetworkInterface adapter in adapters)
-            {
-
-                IPInterfaceProperties adapterProperties = adapter.GetIPProperties();
-                IPAddressCollection dnsServers = adapterProperties.DnsAddresses;
-                if (dnsServers.Count > 0)
-                {
-                    tbdns.Text+=adapter.Description;
-                    tbdns.Text += Environment.NewLine;
-                    foreach (IPAddress dns in dnsServers)
-                    {
-                        Console.WriteLine("  DNS Servers  : {0}",
-                            dns.ToString());
-                        tbdns.Text += "  DNS Servers  : " + dns.ToString();
-                        tbdns.Text += Environment.NewLine;
-                    }
-                    Console.WriteLine();
-                }
-            }
+            DNSQueryForm dnsQueryForm = new DNSQueryForm();
+            dnsQueryForm.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)

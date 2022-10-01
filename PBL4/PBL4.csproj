@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DNSQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DNSQueryForm.Designer.cs">
+      <DependentUpon>DNSQueryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
       <DependentUpon>TracertForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TracertEntry.cs" />
+    <EmbeddedResource Include="DNSQueryForm.resx">
+      <DependentUpon>DNSQueryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
