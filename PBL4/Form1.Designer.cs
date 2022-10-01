@@ -36,13 +36,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lbStatus = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.txtIP = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
             this.tbdns = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ipCombo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,14 +120,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // txtIP
-            // 
-            this.txtIP.Enabled = false;
-            this.txtIP.Location = new System.Drawing.Point(131, 39);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(100, 22);
-            this.txtIP.TabIndex = 1;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -183,11 +175,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(585, 210);
             this.dataGridView1.TabIndex = 16;
             // 
+            // ipCombo
+            // 
+            this.ipCombo.FormattingEnabled = true;
+            this.ipCombo.Location = new System.Drawing.Point(131, 31);
+            this.ipCombo.Name = "ipCombo";
+            this.ipCombo.Size = new System.Drawing.Size(121, 24);
+            this.ipCombo.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1073, 496);
+            this.Controls.Add(this.ipCombo);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.tbdns);
@@ -200,7 +201,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtIP);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
@@ -222,13 +222,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbdns;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox ipCombo;
     }
 }
 

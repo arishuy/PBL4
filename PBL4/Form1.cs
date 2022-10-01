@@ -60,12 +60,15 @@ namespace PBL4
         private void button2_Click(object sender, EventArgs e)
         {
             data.Rows.Clear();
-            string subnet = txtIP.Text.Substring(0, txtIP.Text.LastIndexOf("."));
-            progressBar.Maximum = 254;
-            progressBar.Value = 0;
-            lbStatus.ForeColor = Color.Blue;
-            lbStatus.Text = "Scanning...";
-            ScanIP(subnet);
+                lbStatus.ForeColor = Color.Blue;
+                lbStatus.Text = "Scanning...";
+                progressBar.Value = 0;
+                progressBar.Maximum = 254;
+            foreach (string item in ipCombo.Items)
+            {
+                string subnet = item.Substring(0, item.LastIndexOf("."));
+                ScanIP(subnet);
+            }
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -80,9 +83,10 @@ namespace PBL4
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    txtIP.Text = ip.ToString();
+                    ipCombo.Items.Add(ip.ToString());
                 }
             }
+            ipCombo.SelectedIndex = 0;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -94,7 +98,7 @@ namespace PBL4
         {
             Task.Factory.StartNew(new Action(() =>
             {
-                Parallel.For(2, 255, (i, loop) =>
+                Parallel.For(1, 255, (i, loop) =>
                 //for (int i = 2; i < 255; i++)
                 {
                     int timeout = 500;
