@@ -62,12 +62,13 @@ namespace PBL4
             data.Rows.Clear();
                 lbStatus.ForeColor = Color.Blue;
                 lbStatus.Text = "Scanning...";
+            int count = 255 * ipCombo.Items.Count - 1;
                 progressBar.Value = 0;
-                progressBar.Maximum = 254;
+                progressBar.Maximum = count;
             foreach (string item in ipCombo.Items)
             {
                 string subnet = item.Substring(0, item.LastIndexOf("."));
-                ScanIP(subnet);
+                ScanIP(subnet, count);
             }
         }
         private void button3_Click(object sender, EventArgs e)
@@ -94,17 +95,16 @@ namespace PBL4
             TracertForm tracert = new TracertForm();
             tracert.Show();
         }
-        private void ScanIP(string subnet)
+        private void ScanIP(string subnet, int count)
         {
             Task.Factory.StartNew(new Action(() =>
             {
                 Parallel.For(1, 255, (i, loop) =>
-                //for (int i = 2; i < 255; i++)
-                {
+                {   
                     int timeout = 500;
                     string ip = $"{subnet}.{i}";
                     Ping ping = new Ping();
-                    PingOptions pingOptions = new PingOptions(1, true);
+                    PingOptions pingOptions = new PingOptions(100, true);
                     PingReply reply = ping.Send(ip, timeout, new byte[] { 0 }, pingOptions);
                     if (reply.Status == IPStatus.Success)
                     {
@@ -114,23 +114,20 @@ namespace PBL4
                             try
                             {
                                 IPHostEntry host = Dns.GetHostEntry(IPAddress.Parse(ip));
-                                //lvResult.Items.Add(new ListViewItem(new String[] { ip, host.HostName, "Active" }));
                                 data.Rows.Add(ip, host.HostName, "Active");
                             }
                             catch (SocketException ex)
                             {
                                 data.Rows.Add(ip, "Unknown", "Active");
-
-                                //lvResult.Items.Add(new ListViewItem(new String[] { ip, "Unknown", "Active" }));
                             }
                             progressBar.Value += 1;
 
-                            if (progressBar.Value == 253)
+                            if (progressBar.Value == count - 1)
                             {
                                 lbStatus.ForeColor = Color.Green;
                                 lbStatus.Text = "Finished";
+                                progressBar.Value = 0;
                             }
-
                         }));
                     }
                     else
@@ -138,9 +135,7 @@ namespace PBL4
                         progressBar.BeginInvoke(new Action(() =>
                         {
                             progressBar.Value += 1;
-
-                            //lvResult.Items.Add(new ListViewItem(new String[] { ip, "", "Down" }));
-                            if (progressBar.Value == 253)
+                            if (progressBar.Value == count - 1)
                             {
                                 lbStatus.ForeColor = Color.Green;
                                 lbStatus.Text = "Finished";
@@ -150,6 +145,7 @@ namespace PBL4
                     }
                 });
             }));
+            
         }
     }
 }
