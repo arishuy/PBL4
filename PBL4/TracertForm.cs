@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PBL4
@@ -16,6 +18,8 @@ namespace PBL4
             InitializeComponent();
             data = new DataTable();
             dataGridView1.DataSource = data;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             data.Columns.AddRange(new DataColumn[] { new DataColumn("Hop ID"), new DataColumn("Address"), new DataColumn("Host Name"), new DataColumn("Reply Time"), new DataColumn("Reply status") });
         }
 
