@@ -60,7 +60,6 @@ namespace PBL4
                 }
             }
 
-
             // Max hops should be at least one or else there won't be any data to return.
             if (maxHops < 1)
                 throw new ArgumentException("Max hops can't be lower than 1.");
