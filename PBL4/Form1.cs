@@ -26,21 +26,17 @@ namespace PBL4
                 new DataColumn("Status"),
             });
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
-            data = new DataTable();
-            
             label2.Text = "";
             String myping = textBox1.Text;
-            if (myping == "")
-            {
+            if (!IPAddress.TryParse(myping, out IPAddress address))
                 MessageBox.Show("Please enter a valid IP address");
-            }
             else
             {
                 Ping p1 = new Ping();
-                PingReply PR = p1.Send(myping);
+                PingReply PR = p1.Send(address);
                 if (PR.Status == IPStatus.Success)
                 {
                     label2.ForeColor = Color.Green;
@@ -59,6 +55,7 @@ namespace PBL4
 
         private void button2_Click(object sender, EventArgs e)
         {
+            button2.Enabled = false;
             data.Rows.Clear();
                 lbStatus.ForeColor = Color.Blue;
                 lbStatus.Text = "Scanning...";
@@ -101,7 +98,7 @@ namespace PBL4
             {
                 Parallel.For(1, 255, (i, loop) =>
                 {   
-                    int timeout = 500;
+                    int timeout = 100
                     string ip = $"{subnet}.{i}";
                     Ping ping = new Ping();
                     PingOptions pingOptions = new PingOptions(100, true);
@@ -116,7 +113,7 @@ namespace PBL4
                                 IPHostEntry host = Dns.GetHostEntry(IPAddress.Parse(ip));
                                 data.Rows.Add(ip, host.HostName, "Active");
                             }
-                            catch (SocketException ex)
+                            catch (Exception ex)
                             {
                                 data.Rows.Add(ip, "Unknown", "Active");
                             }
@@ -127,6 +124,7 @@ namespace PBL4
                                 lbStatus.ForeColor = Color.Green;
                                 lbStatus.Text = "Finished";
                                 progressBar.Value = 0;
+                                button2.Enabled = true;
                             }
                         }));
                     }
@@ -140,9 +138,12 @@ namespace PBL4
                                 lbStatus.ForeColor = Color.Green;
                                 lbStatus.Text = "Finished";
                                 progressBar.Value = 0;
+                                button2.Enabled = true;
+                                
                             }
                         }));
                     }
+                    ping.Dispose();
                 });
             }));
             
