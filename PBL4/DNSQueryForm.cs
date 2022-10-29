@@ -24,6 +24,7 @@ namespace PBL4
         private void button1_Click(object sender, EventArgs e)
         {
             String hostString = ("fb.com");
+            tbdns.Text = "";
             try
             {
                 // Get 'IPHostEntry' object containing information like host name, IP addresses, aliases for a host.
@@ -132,6 +133,7 @@ namespace PBL4
         private void button3_Click(object sender, EventArgs e)
         {
             String hostString = txtDomainName.Text;
+            tbdns.Text = "";
             try
             {
                 // Get 'IPHostEntry' object containing information like host name, IP addresses, aliases for a host.

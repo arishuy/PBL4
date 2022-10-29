@@ -97,8 +97,8 @@ namespace PBL4
             Task.Factory.StartNew(new Action(() =>
             {
                 Parallel.For(1, 255, (i, loop) =>
-                {   
-                    int timeout = 100
+                {
+                    int timeout = 100;
                     string ip = $"{subnet}.{i}";
                     Ping ping = new Ping();
                     PingOptions pingOptions = new PingOptions(100, true);
