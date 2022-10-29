@@ -80,6 +80,8 @@ namespace PBL4
         }
         private void btnTrangchu_Click(object sender, EventArgs e)
         {
+            ActivateButton(sender, Color.FromArgb(255, 163, 26));
+            OpenChildForm(new DashBoard());
         }
 
         private void btnScan_Click(object sender, EventArgs e)
@@ -102,7 +104,8 @@ namespace PBL4
 
         private void btnPing_Click(object sender, EventArgs e)
         {
-
+            ActivateButton(sender, Color.FromArgb(255, 163, 26));
+            OpenChildForm(new PingTool());
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
