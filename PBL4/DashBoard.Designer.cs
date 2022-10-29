@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelMac = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -81,14 +81,14 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "Physical Address:";
             // 
-            // label5
+            // labelMac
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(230, 150);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 16);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "XXX";
+            this.labelMac.AutoSize = true;
+            this.labelMac.Location = new System.Drawing.Point(230, 150);
+            this.labelMac.Name = "labelMac";
+            this.labelMac.Size = new System.Drawing.Size(31, 16);
+            this.labelMac.TabIndex = 25;
+            this.labelMac.Text = "XXX";
             // 
             // label6
             // 
@@ -105,7 +105,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelMac);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -126,7 +126,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelMac;
         private System.Windows.Forms.Label label6;
     }
 }
