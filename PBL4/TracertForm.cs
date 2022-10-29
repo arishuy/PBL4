@@ -46,11 +46,21 @@ namespace PBL4
             foreach (var item in Tracert( ipAddress, maxHops, timeout)) progress.Report(item);
         }
 
-        private IEnumerable<TracertEntry> Tracert(string ipAddress, int maxHops, int timeout)
+        private IEnumerable<TracertEntry> Tracert(string HostOrIPAddress, int maxHops, int timeout)
         {
             // Ensure that the argument address is valid.
-            if (!IPAddress.TryParse(ipAddress, out IPAddress address))
-            throw new ArgumentException(string.Format("{0} is not a valid IP address.", ipAddress));
+            if (!IPAddress.TryParse(HostOrIPAddress, out IPAddress address))
+            {
+                try
+                {
+                    IPHostEntry hostInfo = Dns.GetHostEntry(HostOrIPAddress);
+                    address = hostInfo.AddressList[0];
+                }
+                catch
+                {
+                    throw new ArgumentException(string.Format("{0} is not a valid address.", HostOrIPAddress));
+                }
+            }
 
             // Max hops should be at least one or else there won't be any data to return.
             if (maxHops < 1)
