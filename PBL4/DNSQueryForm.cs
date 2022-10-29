@@ -21,71 +21,71 @@ namespace PBL4
         }
 
         [Obsolete]
-        private void button1_Click(object sender, EventArgs e)
-        {
-            String hostString = ("fb.com");
-            tbdns.Text = "";
-            try
-            {
-                // Get 'IPHostEntry' object containing information like host name, IP addresses, aliases for a host.
-                IPHostEntry hostInfo = Dns.GetHostByName(hostString);
-                tbdns.Text += ("Host name : " + hostInfo.HostName);
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("IP address List : ");
-                tbdns.Text += Environment.NewLine;
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    String hostString = ("fb.com");
+        //    tbdns.Text = "";
+        //    try
+        //    {
+        //        // Get 'IPHostEntry' object containing information like host name, IP addresses, aliases for a host.
+        //        IPHostEntry hostInfo = Dns.GetHostByName(hostString);
+        //        tbdns.Text += ("Host name : " + hostInfo.HostName);
+        //        tbdns.Text += Environment.NewLine;
+        //        tbdns.Text += ("IP address List : ");
+        //        tbdns.Text += Environment.NewLine;
 
-                for (int index = 0; index < hostInfo.AddressList.Length; index++)
-                {
-                    tbdns.Text += (hostInfo.AddressList[index]);
-                    tbdns.Text += Environment.NewLine;
-                }
+        //        for (int index = 0; index < hostInfo.AddressList.Length; index++)
+        //        {
+        //            tbdns.Text += (hostInfo.AddressList[index]);
+        //            tbdns.Text += Environment.NewLine;
+        //        }
 
 
-                /*IPHostEntry hostInfo = Dns.Resolve(hostString);
-                // Get the IP address list that resolves to the host names contained in the
-                // Alias property.
-                IPAddress[] address = hostInfo.AddressList;
-                // Get the alias names of the addresses in the IP address list.
-                String[] alias = hostInfo.Aliases;
+        //        /*IPHostEntry hostInfo = Dns.Resolve(hostString);
+        //        // Get the IP address list that resolves to the host names contained in the
+        //        // Alias property.
+        //        IPAddress[] address = hostInfo.AddressList;
+        //        // Get the alias names of the addresses in the IP address list.
+        //        String[] alias = hostInfo.Aliases;
 
-                tbdns.Text += ("Host name : " + hostInfo.HostName);
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("\nAliases : ");
-                tbdns.Text += Environment.NewLine;
-                for (int index = 0; index < alias.Length; index++)
-                {
-                    tbdns.Text += (alias[index]);
-                    tbdns.Text += Environment.NewLine;
-                }
-                tbdns.Text += ("\nIP Address list :");
-                tbdns.Text += Environment.NewLine;
-                for (int index = 0; index < address.Length; index++)
-                {
-                    tbdns.Text += (address[index]);
-                    tbdns.Text += Environment.NewLine;
-                }*/
+        //        tbdns.Text += ("Host name : " + hostInfo.HostName);
+        //        tbdns.Text += Environment.NewLine;
+        //        tbdns.Text += ("\nAliases : ");
+        //        tbdns.Text += Environment.NewLine;
+        //        for (int index = 0; index < alias.Length; index++)
+        //        {
+        //            tbdns.Text += (alias[index]);
+        //            tbdns.Text += Environment.NewLine;
+        //        }
+        //        tbdns.Text += ("\nIP Address list :");
+        //        tbdns.Text += Environment.NewLine;
+        //        for (int index = 0; index < address.Length; index++)
+        //        {
+        //            tbdns.Text += (address[index]);
+        //            tbdns.Text += Environment.NewLine;
+        //        }*/
 
-            }
-            catch (SocketException e0)
-            {
-                Console.WriteLine("SocketException caught!!!");
-                Console.WriteLine("Source : " + e0.Source);
-                Console.WriteLine("Message : " + e0.Message);
-            }
-            catch (ArgumentNullException e1)
-            {
-                Console.WriteLine("ArgumentNullException caught!!!");
-                Console.WriteLine("Source : " + e1.Source);
-                Console.WriteLine("Message : " + e1.Message);
-            }
-            catch (Exception e2)
-            {
-                Console.WriteLine("Exception caught!!!");
-                Console.WriteLine("Source : " + e2.Source);
-                Console.WriteLine("Message : " + e2.Message);
-            }
+        //    }
+        //    catch (SocketException e0)
+        //    {
+        //        Console.WriteLine("SocketException caught!!!");
+        //        Console.WriteLine("Source : " + e0.Source);
+        //        Console.WriteLine("Message : " + e0.Message);
+        //    }
+        //    catch (ArgumentNullException e1)
+        //    {
+        //        Console.WriteLine("ArgumentNullException caught!!!");
+        //        Console.WriteLine("Source : " + e1.Source);
+        //        Console.WriteLine("Message : " + e1.Message);
+        //    }
+        //    catch (Exception e2)
+        //    {
+        //        Console.WriteLine("Exception caught!!!");
+        //        Console.WriteLine("Source : " + e2.Source);
+        //        Console.WriteLine("Message : " + e2.Message);
+        //    }
 
-        }
+        //}
 
         private void button2_Click(object sender, EventArgs e)
         {

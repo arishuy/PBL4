@@ -30,7 +30,6 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbStatus = new System.Windows.Forms.Label();
@@ -38,9 +37,10 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ipCombo = new System.Windows.Forms.ComboBox();
             this.button2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ipCombo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,15 +60,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "My IP";
             // 
             // label2
             // 
@@ -133,14 +124,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(585, 210);
             this.dataGridView1.TabIndex = 16;
             // 
-            // ipCombo
-            // 
-            this.ipCombo.FormattingEnabled = true;
-            this.ipCombo.Location = new System.Drawing.Point(131, 31);
-            this.ipCombo.Name = "ipCombo";
-            this.ipCombo.Size = new System.Drawing.Size(121, 24);
-            this.ipCombo.TabIndex = 19;
-            // 
             // button2
             // 
             this.button2.IconChar = FontAwesome.Sharp.IconChar.Play;
@@ -169,6 +152,23 @@
             this.iconButton1.Text = "Stop";
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(62, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "My IP";
+            // 
+            // ipCombo
+            // 
+            this.ipCombo.FormattingEnabled = true;
+            this.ipCombo.Location = new System.Drawing.Point(131, 31);
+            this.ipCombo.Name = "ipCombo";
+            this.ipCombo.Size = new System.Drawing.Size(121, 24);
+            this.ipCombo.TabIndex = 19;
             // 
             // Form1
             // 
@@ -201,7 +201,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbStatus;
@@ -209,9 +208,10 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox ipCombo;
         private FontAwesome.Sharp.IconButton button2;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox ipCombo;
     }
 }
 

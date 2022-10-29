@@ -50,7 +50,7 @@ namespace PBL4
         {
             // Ensure that the argument address is valid.
             if (!IPAddress.TryParse(ipAddress, out IPAddress address))
-                throw new ArgumentException(string.Format("{0} is not a valid IP address.", ipAddress));
+            throw new ArgumentException(string.Format("{0} is not a valid IP address.", ipAddress));
 
             // Max hops should be at least one or else there won't be any data to return.
             if (maxHops < 1)
@@ -92,5 +92,6 @@ namespace PBL4
             }
             while (reply.Status != IPStatus.Success && pingOptions.Ttl <= maxHops);
         }
+
     }
 }

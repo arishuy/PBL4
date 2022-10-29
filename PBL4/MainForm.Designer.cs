@@ -41,9 +41,9 @@
             this.btnQuit = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelTl = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             btnTrangchu = new FontAwesome.Sharp.IconButton();
             btnScan = new FontAwesome.Sharp.IconButton();
             btnTracer = new FontAwesome.Sharp.IconButton();
@@ -54,8 +54,8 @@
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panelTl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelTl.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnTrangchu
@@ -78,6 +78,7 @@
             btnTrangchu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnTrangchu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             btnTrangchu.UseVisualStyleBackColor = true;
+            btnTrangchu.Click += new System.EventHandler(this.btnTrangchu_Click);
             // 
             // btnScan
             // 
@@ -103,7 +104,7 @@
             // 
             // btnTracer
             // 
-            btnTracer.Cursor = System.Windows.Forms.Cursors.No;
+            btnTracer.Cursor = System.Windows.Forms.Cursors.Arrow;
             btnTracer.FlatAppearance.BorderSize = 0;
             btnTracer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnTracer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -257,6 +258,16 @@
             this.panel1.Size = new System.Drawing.Size(200, 74);
             this.panel1.TabIndex = 3;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(43, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 59);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // panelTl
             // 
             this.panelTl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -277,16 +288,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nhân viên";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(43, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(110, 59);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -304,9 +305,9 @@
             this.panelMenu.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelTl.ResumeLayout(false);
             this.panelTl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
