@@ -32,17 +32,15 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.lbStatus = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
-            this.tbdns = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ipCombo = new System.Windows.Forms.ComboBox();
+            this.button2 = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,16 +79,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Status";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(65, 387);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Scan IP";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -104,21 +92,11 @@
             // 
             this.lbStatus.AutoSize = true;
             this.lbStatus.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbStatus.Location = new System.Drawing.Point(212, 394);
+            this.lbStatus.Location = new System.Drawing.Point(128, 394);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(40, 16);
             this.lbStatus.TabIndex = 9;
             this.lbStatus.Text = "None";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(683, 432);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(96, 36);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "DNS Query";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label4
             // 
@@ -139,31 +117,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(162, 394);
+            this.label5.Location = new System.Drawing.Point(67, 394);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 9;
             this.label5.Text = "Status";
-            // 
-            // tbdns
-            // 
-            this.tbdns.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdns.Location = new System.Drawing.Point(683, 139);
-            this.tbdns.Multiline = true;
-            this.tbdns.Name = "tbdns";
-            this.tbdns.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbdns.Size = new System.Drawing.Size(325, 287);
-            this.tbdns.TabIndex = 14;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(65, 445);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Tracer";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // dataGridView1
             // 
@@ -183,21 +141,48 @@
             this.ipCombo.Size = new System.Drawing.Size(121, 24);
             this.ipCombo.TabIndex = 19;
             // 
+            // button2
+            // 
+            this.button2.IconChar = FontAwesome.Sharp.IconChar.Play;
+            this.button2.IconColor = System.Drawing.Color.Black;
+            this.button2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.button2.IconSize = 30;
+            this.button2.Location = new System.Drawing.Point(682, 139);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(87, 62);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Scan";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Stop;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 30;
+            this.iconButton1.Location = new System.Drawing.Point(682, 219);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(87, 62);
+            this.iconButton1.TabIndex = 22;
+            this.iconButton1.Text = "Stop";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1073, 496);
+            this.ClientSize = new System.Drawing.Size(866, 496);
+            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.ipCombo);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.tbdns);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -218,17 +203,15 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbStatus;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbdns;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox ipCombo;
+        private FontAwesome.Sharp.IconButton button2;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }
 
