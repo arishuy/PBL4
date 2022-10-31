@@ -32,7 +32,7 @@ namespace PBL4
                 progress.ProgressChanged += (s, item) =>
                 {
                     data.Rows.Add(item.HopID, item.Address, item.Hostname, item.ReplyTime, item.ReplyStatus);
-                };     
+                };
                 Task.Run(() => GetItemsAndReport(progress, textBox1.Text, 100, 100));
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace PBL4
 
         void GetItemsAndReport(IProgress<TracertEntry> progress, string ipAddress, int maxHops, int timeout)
         {
-            foreach (var item in Tracert( ipAddress, maxHops, timeout)) progress.Report(item);
+            foreach (var item in Tracert(ipAddress, maxHops, timeout)) progress.Report(item);
         }
 
         private IEnumerable<TracertEntry> Tracert(string HostOrIPAddress, int maxHops, int timeout)
@@ -51,14 +51,12 @@ namespace PBL4
             // Ensure that the argument address is valid.
             if (!IPAddress.TryParse(HostOrIPAddress, out IPAddress address))
             {
-                try
-                {
+                try {
                     IPHostEntry hostInfo = Dns.GetHostEntry(HostOrIPAddress);
                     address = hostInfo.AddressList[0];
                 }
-                catch
-                {
-                    throw new ArgumentException(string.Format("{0} is not a valid address.", HostOrIPAddress));
+                catch {
+                    throw new ArgumentException(string.Format("{0} is not a valid address.", HostOrIPAddress)); 
                 }
             }
 
@@ -83,7 +81,7 @@ namespace PBL4
                     try
                     {
                         IPHostEntry ipHostInfo = Dns.GetHostEntry(IPAddress.Parse(reply.Address.ToString()));
-                        hostname = ipHostInfo.HostName;                                                                              
+                        hostname = ipHostInfo.HostName;
                     }
                     catch (SocketException) { /* No host available for that address. */ }
                 }
