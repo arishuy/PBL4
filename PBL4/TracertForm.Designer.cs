@@ -75,6 +75,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
             this.ClientSize = new System.Drawing.Size(990, 469);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
