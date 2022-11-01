@@ -69,7 +69,7 @@
             btnTrangchu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnTrangchu.IconSize = 36;
             btnTrangchu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnTrangchu.Location = new System.Drawing.Point(0, 77);
+            btnTrangchu.Location = new System.Drawing.Point(0, 74);
             btnTrangchu.Name = "btnTrangchu";
             btnTrangchu.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             btnTrangchu.Size = new System.Drawing.Size(200, 60);
@@ -171,7 +171,7 @@
             // 
             // panelDesktop
             // 
-            this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(199)))), ((int)(((byte)(136)))));
             this.panelDesktop.Controls.Add(this.panel3);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(200, 0);
@@ -181,7 +181,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(115)))), ((int)(((byte)(77)))));
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -202,7 +202,7 @@
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(115)))), ((int)(((byte)(77)))));
             this.panelMenu.Controls.Add(this.btnQuit);
             this.panelMenu.Controls.Add(btnPing);
             this.panelMenu.Controls.Add(btnDNS);
@@ -250,7 +250,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(115)))), ((int)(((byte)(77)))));
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
