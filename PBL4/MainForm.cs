@@ -33,7 +33,7 @@ namespace PBL4
                 DisableButton();
                 //Button
                 currentBtn = (IconButton)senderBtn;
-                currentBtn.BackColor = Color.FromArgb(221, 255, 188);
+                currentBtn.BackColor = Color.FromArgb(94, 98, 107);
                 currentBtn.ForeColor = color;
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
                 currentBtn.IconColor = color;
@@ -52,7 +52,7 @@ namespace PBL4
         {
             if (currentBtn != null)
             {
-                currentBtn.BackColor = Color.FromArgb(82, 115, 77);
+                currentBtn.BackColor = Color.Transparent;
                 currentBtn.ForeColor = Color.Gainsboro;
                 currentBtn.TextAlign = ContentAlignment.MiddleLeft;
                 currentBtn.IconColor = Color.Gainsboro;
@@ -73,8 +73,8 @@ namespace PBL4
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            panelDesktop.Controls.Add(childForm);
-            panelDesktop.Tag = childForm;
+            panelTotal.Controls.Add(childForm);
+            panelTotal.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
         }

@@ -28,82 +28,99 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.txtDomainName = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.tbdns = new System.Windows.Forms.TextBox();
-            this.txtDomainName = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // guna2GradientPanel1
+            // 
+            this.guna2GradientPanel1.Controls.Add(this.label1);
+            this.guna2GradientPanel1.Controls.Add(this.button3);
+            this.guna2GradientPanel1.Controls.Add(this.txtDomainName);
+            this.guna2GradientPanel1.Controls.Add(this.button2);
+            this.guna2GradientPanel1.Controls.Add(this.tbdns);
+            this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2GradientPanel1.FillColor = System.Drawing.Color.Gray;
+            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.Black;
+            this.guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(800, 450);
+            this.guna2GradientPanel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(40, 57);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 16);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Input domain:";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(43, 94);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "Scan";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // txtDomainName
+            // 
+            this.txtDomainName.Location = new System.Drawing.Point(143, 51);
+            this.txtDomainName.Name = "txtDomainName";
+            this.txtDomainName.Size = new System.Drawing.Size(173, 22);
+            this.txtDomainName.TabIndex = 11;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(228, 72);
+            this.button2.Location = new System.Drawing.Point(241, 94);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
+            this.button2.TabIndex = 10;
             this.button2.Text = "Detail";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // tbdns
             // 
-            this.tbdns.Location = new System.Drawing.Point(363, 29);
+            this.tbdns.Location = new System.Drawing.Point(376, 51);
             this.tbdns.Multiline = true;
             this.tbdns.Name = "tbdns";
             this.tbdns.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbdns.Size = new System.Drawing.Size(384, 349);
-            this.tbdns.TabIndex = 3;
-            // 
-            // txtDomainName
-            // 
-            this.txtDomainName.Location = new System.Drawing.Point(130, 29);
-            this.txtDomainName.Name = "txtDomainName";
-            this.txtDomainName.Size = new System.Drawing.Size(173, 22);
-            this.txtDomainName.TabIndex = 6;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(30, 72);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Scan";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 16);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Input domain:";
+            this.tbdns.TabIndex = 9;
             // 
             // DNSQueryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.txtDomainName);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.tbdns);
+            this.Controls.Add(this.guna2GradientPanel1);
             this.Name = "DNSQueryForm";
             this.Text = "DNSQueryForm";
+            this.guna2GradientPanel1.ResumeLayout(false);
+            this.guna2GradientPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtDomainName;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox tbdns;
-        private System.Windows.Forms.TextBox txtDomainName;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label1;
     }
 }

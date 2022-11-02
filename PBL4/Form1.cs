@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Security.AccessControl;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 namespace PBL4
 {
@@ -18,6 +19,7 @@ namespace PBL4
         {
             InitializeComponent();
             data = new DataTable();
+            var topLeftHeaderCell = dataGridView1.TopLeftHeaderCell;
             dataGridView1.DataSource = data;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -53,7 +55,7 @@ namespace PBL4
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonScan_Click(object sender, EventArgs e)
         {
             button2.Enabled = false;
             data.Rows.Clear();
@@ -68,12 +70,6 @@ namespace PBL4
                 ScanIP(subnet, count);
             }
         }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            DNSQueryForm dnsQueryForm = new DNSQueryForm();
-            dnsQueryForm.Show();
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());
@@ -85,12 +81,6 @@ namespace PBL4
                 }
             }
             ipCombo.SelectedIndex = 0;
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            TracertForm tracert = new TracertForm();
-            tracert.Show();
         }
         private void ScanIP(string subnet, int count)
         {
