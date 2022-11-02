@@ -32,13 +32,13 @@ namespace PBL4
                 if (PR.Status == IPStatus.Success)
                 {
                     label6.Text = PR.RoundtripTime.ToString() + " ms";
-                    label3.ForeColor = Color.Green;
+                    label3.ForeColor = Color.Lime;
                     label3.Text = "Ping to " + myping + " was successful";
                 }
                 else
                 {
                     label3.ForeColor = Color.Red;
-
+                    label6.Text = "";
                     label3.Text = "Ping to " + myping + " was unsuccessful";
                 }
                 p1.Dispose();
