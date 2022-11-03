@@ -1,4 +1,5 @@
 ﻿using FontAwesome.Sharp;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace PBL4
         public MainForm()
         {
             InitializeComponent();
+            Control.SetIntial(this);
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
@@ -108,9 +110,25 @@ namespace PBL4
             OpenChildForm(new PingTool());
         }
 
-        private void btnQuit_Click(object sender, EventArgs e)
+        private void buttonMinimize_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Control.Minimize(this);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Control.Exit();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Guna2Button btn = (Guna2Button)sender;
+            Control.DoMaximize(this, btn);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Control.DoFullscreen(this);
         }
     }
 }

@@ -59,6 +59,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control.cs" />
     <Compile Include="DashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
