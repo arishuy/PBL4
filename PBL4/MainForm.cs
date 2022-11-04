@@ -75,8 +75,8 @@ namespace PBL4
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            panelTotal.Controls.Add(childForm);
-            panelTotal.Tag = childForm;
+            panelDesktop.Controls.Add(childForm);
+            panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
         }

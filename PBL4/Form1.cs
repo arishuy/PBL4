@@ -29,45 +29,21 @@ namespace PBL4
             });
         }
         
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label2.Text = "";
-            String myping = textBox1.Text;
-            if (!IPAddress.TryParse(myping, out IPAddress address))
-                MessageBox.Show("Please enter a valid IP address");
-            else
-            {
-                Ping p1 = new Ping();
-                PingReply PR = p1.Send(address);
-                if (PR.Status == IPStatus.Success)
-                {
-                    label2.ForeColor = Color.Green;
-                    label2.Text = "Ping to " + myping + " was successful";
-                }
-                else
-                {
-                label2.ForeColor = Color.Red;
-
-                    label2.Text = "Ping to " + myping + " was unsuccessful";
-                }
-                p1.Dispose();
-            }
-            
-        }
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
+            int timeout = trackbar.Value * 4 + 100;
             button2.Enabled = false;
             data.Rows.Clear();
-                lbStatus.ForeColor = Color.Blue;
-                lbStatus.Text = "Scanning...";
+            lbStatus.ForeColor = Color.Blue;
+            lbStatus.Text = "Scanning...";
             int count = 255 * ipCombo.Items.Count - 1;
-                progressBar.Value = 0;
-                progressBar.Maximum = count;
+            progressBar.Value = 0;
+            progressBar.Maximum = count;
             foreach (string item in ipCombo.Items)
             {
                 string subnet = item.Substring(0, item.LastIndexOf("."));
-                ScanIP(subnet, count);
+                ScanIP(subnet, count, timeout);
             }
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -82,13 +58,13 @@ namespace PBL4
             }
             ipCombo.SelectedIndex = 0;
         }
-        private void ScanIP(string subnet, int count)
+        private async void ScanIP(string subnet, int count, int timeout)
         {
-            Task.Factory.StartNew(new Action(() =>
+            await Task.Factory.StartNew(new Action(() =>
             {
                 Parallel.For(1, 255, (i, loop) =>
                 {
-                    int timeout = 100;
+                    //int timeout = 100;
                     string ip = $"{subnet}.{i}";
                     Ping ping = new Ping();
                     PingOptions pingOptions = new PingOptions(100, true);
@@ -137,6 +113,15 @@ namespace PBL4
                 });
             }));
             
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void trackbar_Scroll(object sender, ScrollEventArgs e)
+        {
+            label7.Text = (trackbar.Value * 4 + 100).ToString() + "ms";
         }
     }
 }
