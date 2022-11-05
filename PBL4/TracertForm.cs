@@ -33,6 +33,7 @@ namespace PBL4
                 {
                     data.Rows.Add(item.HopID, item.Address, item.Hostname, item.ReplyTime, item.ReplyStatus);
                 };
+                button1.Enabled = false;
                 await Task.Run(() =>
                 {
                     try
@@ -45,6 +46,7 @@ namespace PBL4
                     }
                 }
                 );
+                button1.Enabled = true;
             }
             catch (Exception ex)
             {
