@@ -19,7 +19,7 @@ namespace PBL4
         private Form currentChildForm = null;
         TracertForm tracertForm = new TracertForm();
         PingTool pingTool = new PingTool();
-        Form1 form1 = new Form1();
+        IPScanner form1 = new IPScanner();
         DNSQueryForm dNSQueryForm = new DNSQueryForm();
 
         public MainForm()
