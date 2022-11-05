@@ -48,6 +48,7 @@ namespace PBL4
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            label7.Text = (trackbar.Value * 4 + 100).ToString() + "ms";
             var host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ip in host.AddressList)
             {

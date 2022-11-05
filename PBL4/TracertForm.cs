@@ -38,7 +38,7 @@ namespace PBL4
                 {
                     try
                     {
-                        GetItemsAndReport(progress, textBox1.Text, 100, 100);
+                        GetItemsAndReport(progress, textBox1.Text, Convert.ToInt32(txtMaxHops.Text), 100);
                     }
                     catch (Exception ex)
                     {
