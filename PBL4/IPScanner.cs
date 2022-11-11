@@ -17,6 +17,7 @@ namespace PBL4
     public partial class IPScanner : Form
     {
         DataTable data;
+        Thread myThread = null;
         public IPScanner()
         {
             InitializeComponent();
@@ -40,13 +41,17 @@ namespace PBL4
             lbStatus.ForeColor = Color.Blue;
             lbStatus.Text = "Scanning...";
             int count = 255 * ipCombo.Items.Count - 1;
-            progressBar.Value = 0;
-            progressBar.Maximum = count;
+            btnStop.Enabled = true;
+            myThread = new Thread(() =>
+            {
             foreach (CBBItem item in ipCombo.Items)
             {
                 IPAddress subnet = GetSubNetMask(item.Value);
                 ScanIP(subnet, count, timeout, item.Value);
             }
+            });
+            myThread.Start();
+            
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -127,6 +132,8 @@ namespace PBL4
             PingReply reply;
             IPAddress addr;
             IPHostEntry host;
+            //progressBar.Minimum = 0;
+            //progressBar.Maximum = 255 * (endIP[2] - startIP[2] + 1);
             //Loops through the IP range, maxing out at 255
             for (int i = startIP[2]; i <= endIP[2]; i++)
             { //3rd octet loop
@@ -151,8 +158,6 @@ namespace PBL4
                         break;
                     }
 
-                    lbStatus.ForeColor = System.Drawing.Color.Green; //Set status label for current IP address
-                    lbStatus.Text = "Scanning: " + ipAddress;
 
                     //Log pinged IP address in listview
                     //Grabs DNS information to obtain system info
@@ -172,15 +177,24 @@ namespace PBL4
                             Console.WriteLine("add");
                         }
                     }
-                    progressBar.Value += 1; //Increase progress bar
                 }
 
                 startIP[3] = 1; //If 4th octet reaches 255, reset back to 1
             }
+            button2.Enabled = true;
+            btnStop.Enabled = false;
+            progressBar.Value = 0;
+            lbStatus.ForeColor = Color.Green;
+            lbStatus.Text = "Finished";
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            myThread.Abort();
+            button2.Enabled = true;
+            btnStop.Enabled = false;
+            lbStatus.ForeColor = Color.Green;
+            lbStatus.Text = "None";
         }
 
         private void trackbar_Scroll(object sender, ScrollEventArgs e)
