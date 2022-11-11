@@ -44,11 +44,11 @@ namespace PBL4
             btnStop.Enabled = true;
             myThread = new Thread(() =>
             {
-                foreach (CBBItem item in ipCombo.Items)
-                {
-                    IPAddress subnet = GetSubNetMask(item.Value);
-                    ScanIP(subnet, count, timeout, item.Value);
-                }
+            foreach (CBBItem item in ipCombo.Items)
+            {
+                IPAddress subnet = GetSubNetMask(item.Value);
+                ScanIP(subnet, count, timeout, item.Value);
+            }
             });
             myThread.Start();
             
@@ -158,8 +158,6 @@ namespace PBL4
                         break;
                     }
 
-                    //lbStatus.ForeColor = System.Drawing.Color.Green; //Set status label for current IP address
-                    //lbStatus.Text = "Scanning: " + ipAddress;
 
                     //Log pinged IP address in listview
                     //Grabs DNS information to obtain system info
@@ -179,7 +177,6 @@ namespace PBL4
                             Console.WriteLine("add");
                         }
                     }
-                    //progressBar.Value += 1; //Increase progress bar
                 }
 
                 startIP[3] = 1; //If 4th octet reaches 255, reset back to 1

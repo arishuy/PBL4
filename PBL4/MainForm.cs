@@ -17,7 +17,11 @@ namespace PBL4
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm = null;
-        public string id_NhanVien { get; set; }
+        TracertForm tracertForm = new TracertForm();
+        PingTool pingTool = new PingTool();
+        IPScanner form1 = new IPScanner();
+        DNSQueryForm dNSQueryForm = new DNSQueryForm();
+
         public MainForm()
         {
             InitializeComponent();
@@ -68,7 +72,7 @@ namespace PBL4
             //open only form
             if (currentChildForm != null)
             {
-                currentChildForm.Close();
+                //currentChildForm.Close();
             }
             currentChildForm = childForm;
             //End
@@ -89,25 +93,25 @@ namespace PBL4
         private void btnScan_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 163, 26));
-            OpenChildForm(new Form1());
+            OpenChildForm(form1);
         }
 
         private void btnTracer_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 163, 26));
-            OpenChildForm(new TracertForm());
+            OpenChildForm(tracertForm);
         }
 
         private void btnDNS_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 163, 26));
-            OpenChildForm(new DNSQueryForm());
+            OpenChildForm(dNSQueryForm);
         }
 
         private void btnPing_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.FromArgb(255, 163, 26));
-            OpenChildForm(new PingTool());
+            OpenChildForm(pingTool);
         }
 
         private void buttonMinimize_Click(object sender, EventArgs e)

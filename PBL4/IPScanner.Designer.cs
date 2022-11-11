@@ -1,6 +1,6 @@
 ﻿namespace PBL4
 {
-    partial class Form1
+    partial class IPScanner
     {
         /// <summary>
         /// Required designer variable.
