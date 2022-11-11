@@ -120,7 +120,7 @@
             btnTracer.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             btnTracer.Size = new System.Drawing.Size(200, 60);
             btnTracer.TabIndex = 13;
-            btnTracer.Text = "IP Tracer";
+            btnTracer.Text = "IP Tracert";
             btnTracer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnTracer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             btnTracer.UseVisualStyleBackColor = false;

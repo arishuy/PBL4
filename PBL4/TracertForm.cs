@@ -23,7 +23,7 @@ namespace PBL4
             data.Columns.AddRange(new DataColumn[] { new DataColumn("Hop ID"), new DataColumn("Address"), new DataColumn("Host Name"), new DataColumn("Reply Time"), new DataColumn("Reply status") });
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             data.Rows.Clear();
             try
@@ -33,7 +33,20 @@ namespace PBL4
                 {
                     data.Rows.Add(item.HopID, item.Address, item.Hostname, item.ReplyTime, item.ReplyStatus);
                 };
-                Task.Run(() => GetItemsAndReport(progress, textBox1.Text, 100, 100));
+                button1.Enabled = false;
+                await Task.Run(() =>
+                {
+                    try
+                    {
+                        GetItemsAndReport(progress, textBox1.Text, Convert.ToInt32(txtMaxHops.Text), 100);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                );
+                button1.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -43,7 +56,14 @@ namespace PBL4
 
         void GetItemsAndReport(IProgress<TracertEntry> progress, string ipAddress, int maxHops, int timeout)
         {
-            foreach (var item in Tracert(ipAddress, maxHops, timeout)) progress.Report(item);
+            try
+            {
+                foreach (var item in Tracert(ipAddress, maxHops, timeout)) progress.Report(item);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private IEnumerable<TracertEntry> Tracert(string HostOrIPAddress, int maxHops, int timeout)
@@ -51,12 +71,14 @@ namespace PBL4
             // Ensure that the argument address is valid.
             if (!IPAddress.TryParse(HostOrIPAddress, out IPAddress address))
             {
-                try {
+                try
+                {
                     IPHostEntry hostInfo = Dns.GetHostEntry(HostOrIPAddress);
                     address = hostInfo.AddressList[0];
                 }
-                catch {
-                    throw new ArgumentException(string.Format("{0} is not a valid address.", HostOrIPAddress)); 
+                catch (Exception ex)
+                {
+                    throw new ArgumentException(string.Format("{0} is not a valid address.", HostOrIPAddress));
                 }
             }
 
