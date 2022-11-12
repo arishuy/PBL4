@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
-using System.IO.Pipes;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Security.AccessControl;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PBL4
 {
@@ -22,6 +17,7 @@ namespace PBL4
         {
             InitializeComponent();
             data = new DataTable();
+            Control.CheckForIllegalCrossThreadCalls = false;
             var topLeftHeaderCell = dataGridView1.TopLeftHeaderCell;
             dataGridView1.DataSource = data;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -35,27 +31,26 @@ namespace PBL4
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            int timeout = trackbar.Value * 4 + 100;
+            int timeout = trackbar.Value + 10;
             button2.Enabled = false;
             data.Rows.Clear();
             lbStatus.ForeColor = Color.Blue;
             lbStatus.Text = "Scanning...";
             int count = 255 * ipCombo.Items.Count - 1;
             btnStop.Enabled = true;
-            myThread = new Thread(() =>
-            {
             foreach (CBBItem item in ipCombo.Items)
             {
                 IPAddress subnet = GetSubNetMask(item.Value);
-                ScanIP(subnet, count, timeout, item.Value);
+                myThread = new Thread(() =>
+                {
+                    ScanIP(subnet, count, timeout, item.Value);
+                });
+                myThread.Start();
             }
-            });
-            myThread.Start();
-            
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            label7.Text = (trackbar.Value * 4 + 100).ToString() + "ms";
+            label7.Text = (trackbar.Value + 10).ToString() + "ms";
             var host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ip in host.AddressList)
             {
@@ -76,58 +71,6 @@ namespace PBL4
             int[] startIP = Array.ConvertAll<string, int>(startIPString, int.Parse); //Change string array to int array
             string[] endIPString = BA.ToString().Split('.');
             int[] endIP = Array.ConvertAll<string, int>(endIPString, int.Parse);
-            //await Task.Factory.StartNew(new Action(() =>
-            //{
-            //    Parallel.For(1, 255, (i, loop) =>
-            //    {
-            //        //int timeout = 100;
-            //        string ip = $"{subnet}.{i}";
-            //        Ping ping = new Ping();
-            //        PingOptions pingOptions = new PingOptions(100, true);
-            //        PingReply reply = ping.Send(ip, timeout, new byte[] { 0 }, pingOptions);
-            //        if (reply.Status == IPStatus.Success)
-            //        {
-            //            progressBar.BeginInvoke(new Action(() =>
-            //            {
-
-            //                try
-            //                {
-            //                    IPHostEntry host = Dns.GetHostEntry(IPAddress.Parse(ip));
-            //                    data.Rows.Add(ip, host.HostName, "Active");
-            //                }
-            //                catch (Exception ex)
-            //                {
-            //                    data.Rows.Add(ip, "Unknown", "Active");
-            //                }
-            //                progressBar.Value += 1;
-
-            //                if (progressBar.Value == count - 1)
-            //                {
-            //                    lbStatus.ForeColor = Color.Green;
-            //                    lbStatus.Text = "Finished";
-            //                    progressBar.Value = 0;
-            //                    button2.Enabled = true;
-            //                }
-            //            }));
-            //        }
-            //        else
-            //        {
-            //            progressBar.BeginInvoke(new Action(() =>
-            //            {
-            //                progressBar.Value += 1;
-            //                if (progressBar.Value == count - 1)
-            //                {
-            //                    lbStatus.ForeColor = Color.Green;
-            //                    lbStatus.Text = "Finished";
-            //                    progressBar.Value = 0;
-            //                    button2.Enabled = true;
-
-            //                }
-            //            }));
-            //        }
-            //        ping.Dispose();
-            //    });
-            //}));
             Ping myPing;
             PingReply reply;
             IPAddress addr;
@@ -157,8 +100,8 @@ namespace PBL4
                     {
                         break;
                     }
-
-
+                    //lbStatus.ForeColor = System.Drawing.Color.Green; //Set status label for current IP address
+                    //lbStatus.Text = "Scanning: " + ipAddress;
                     //Log pinged IP address in listview
                     //Grabs DNS information to obtain system info
                     if (reply.Status == IPStatus.Success)
@@ -168,38 +111,39 @@ namespace PBL4
                             addr = IPAddress.Parse(ipAddress);
                             host = Dns.GetHostEntry(addr);
                             data.Rows.Add(addr, host.HostName, "Active");
-                            Console.WriteLine("add");
                         }
                         catch
                         {
 
                             data.Rows.Add(IPAddress.Parse(ipAddress), "Unknown", "Active");
-                            Console.WriteLine("add");
                         }
                     }
+                    //else
+                    //{
+                    //    data.Rows.Add(ipAddress, "Unknown", "Offline");
+                    //}
+                    myPing.Dispose();
                 }
 
                 startIP[3] = 1; //If 4th octet reaches 255, reset back to 1
             }
-            button2.Enabled = true;
-            btnStop.Enabled = false;
-            progressBar.Value = 0;
-            lbStatus.ForeColor = Color.Green;
-            lbStatus.Text = "Finished";
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            myThread.Abort();
-            button2.Enabled = true;
-            btnStop.Enabled = false;
-            lbStatus.ForeColor = Color.Green;
-            lbStatus.Text = "None";
+            if (myThread.IsAlive == true)
+            {
+                myThread.Abort();
+                btnStop.Enabled = false;
+                button2.Enabled = true;
+                lbStatus.ForeColor = Color.Red;
+                lbStatus.Text = "Scan Stopped";
+            }
         }
 
         private void trackbar_Scroll(object sender, ScrollEventArgs e)
         {
-            label7.Text = (trackbar.Value * 4 + 100).ToString() + "ms";
+            label7.Text = (trackbar.Value + 10).ToString() + "ms";
         }
 
         private static IPAddress GetSubNetMask(IPAddress address)
@@ -236,7 +180,7 @@ namespace PBL4
             byte[] subnetAddressBytes = subnet.GetAddressBytes();
             byte[] networkAddressBytes = GetNetWorkAddress(subnet, ip).GetAddressBytes();
             byte[] broadcastAddressBytes = new byte[ipAddressBytes.Length];
-            
+
             for (int i = 0; i < broadcastAddressBytes.Length; i++)
             {
                 broadcastAddressBytes[i] = (byte)(networkAddressBytes[i] ^ ~subnetAddressBytes[i]);

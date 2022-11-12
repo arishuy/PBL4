@@ -13,6 +13,8 @@ namespace PBL4
         static Point old_loc, default_loc;
         static Size old_size, default_size;
 
+        public static bool CheckForIllegalCrossThreadCalls { get; internal set; }
+
         public static void SetIntial(Form form) //this method should fire when app starts
         {
             old_loc = form.Location;

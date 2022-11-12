@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.trackbar = new Guna.UI2.WinForms.Guna2TrackBar();
             this.progressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
@@ -40,8 +42,6 @@
             this.lbStatus = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -69,6 +69,26 @@
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(866, 496);
             this.guna2GradientPanel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(80, 105);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 16);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Timeout:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Location = new System.Drawing.Point(177, 105);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 16);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "0ms";
             // 
             // label6
             // 
@@ -103,8 +123,9 @@
             // 
             // btnStop
             // 
+            this.btnStop.Enabled = false;
             this.btnStop.IconChar = FontAwesome.Sharp.IconChar.Stop;
-            this.btnStop.IconColor = System.Drawing.Color.Black;
+            this.btnStop.IconColor = System.Drawing.Color.Red;
             this.btnStop.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnStop.IconSize = 30;
             this.btnStop.Location = new System.Drawing.Point(700, 247);
@@ -119,7 +140,7 @@
             // button2
             // 
             this.button2.IconChar = FontAwesome.Sharp.IconChar.Play;
-            this.button2.IconColor = System.Drawing.Color.Black;
+            this.button2.IconColor = System.Drawing.Color.Lime;
             this.button2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.button2.IconSize = 30;
             this.button2.Location = new System.Drawing.Point(700, 167);
@@ -191,34 +212,14 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "My IP";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(177, 105);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 16);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "0ms";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(80, 105);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 16);
-            this.label2.TabIndex = 40;
-            this.label2.Text = "Timeout:";
-            // 
-            // Form1
+            // IPScanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(866, 496);
             this.Controls.Add(this.guna2GradientPanel1);
-            this.Name = "Form1";
+            this.Name = "IPScanner";
             this.Text = "My Basic Network Tool";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
