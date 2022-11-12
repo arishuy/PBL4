@@ -31,7 +31,7 @@ namespace PBL4
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            int timeout = trackbar.Value + 10;
+            int timeout = trackbar.Value * 4 + 100;
             button2.Enabled = false;
             data.Rows.Clear();
             lbStatus.ForeColor = Color.Blue;
@@ -41,16 +41,12 @@ namespace PBL4
             foreach (CBBItem item in ipCombo.Items)
             {
                 IPAddress subnet = GetSubNetMask(item.Value);
-                myThread = new Thread(() =>
-                {
                     ScanIP(subnet, count, timeout, item.Value);
-                });
-                myThread.Start();
             }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            label7.Text = (trackbar.Value + 10).ToString() + "ms";
+            label7.Text = (trackbar.Value*4 + 100).ToString() + "ms";
             var host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ip in host.AddressList)
             {
@@ -64,9 +60,7 @@ namespace PBL4
         private void ScanIP(IPAddress subnet, int count, int timeout, IPAddress ip)
         {
             IPAddress NA = GetNetWorkAddress(subnet, ip);
-            MessageBox.Show(NA.ToString());
             IPAddress BA = GetBroadCastAddress(subnet, ip);
-            MessageBox.Show(BA.ToString());
             string[] startIPString = NA.ToString().Split('.');
             int[] startIP = Array.ConvertAll<string, int>(startIPString, int.Parse); //Change string array to int array
             string[] endIPString = BA.ToString().Split('.');
@@ -82,51 +76,55 @@ namespace PBL4
             { //3rd octet loop
                 for (int y = startIP[3]; y <= 255; y++)
                 { //4th octet loop
-                    string ipAddress = startIP[0] + "." + startIP[1] + "." + i + "." + y; //Convert IP array back into a string
-                    string endIPAddress = endIP[0] + "." + endIP[1] + "." + endIP[2] + "." + (endIP[3] + 1); // +1 is so that the scanning stops at the correct range
+                    myThread = new Thread(() =>
+                    {
+                        string ipAddress = startIP[0] + "." + startIP[1] + "." + i + "." + y; //Convert IP array back into a string
+                        string endIPAddress = endIP[0] + "." + endIP[1] + "." + endIP[2] + "." + (endIP[3] + 1); // +1 is so that the scanning stops at the correct range
 
-                    //If current IP matches final IP in range, break
-                    if (ipAddress == endIPAddress)
-                    {
-                        break;
-                    }
-
-                    myPing = new Ping();
-                    try
-                    {
-                        reply = myPing.Send(ipAddress, timeout); //Ping IP address with 500ms timeout
-                    }
-                    catch (Exception ex)
-                    {
-                        break;
-                    }
-                    //lbStatus.ForeColor = System.Drawing.Color.Green; //Set status label for current IP address
-                    //lbStatus.Text = "Scanning: " + ipAddress;
-                    //Log pinged IP address in listview
-                    //Grabs DNS information to obtain system info
-                    if (reply.Status == IPStatus.Success)
-                    {
+                        //If current IP matches final IP in range, break
+                    
+                        myPing = new Ping();
                         try
                         {
-                            addr = IPAddress.Parse(ipAddress);
-                            host = Dns.GetHostEntry(addr);
-                            data.Rows.Add(addr, host.HostName, "Active");
+                            reply = myPing.Send(ipAddress, timeout); //Ping IP address with 500ms timeout
                         }
-                        catch
+                        catch (Exception ex)
                         {
-
-                            data.Rows.Add(IPAddress.Parse(ipAddress), "Unknown", "Active");
+                            return;
                         }
-                    }
-                    //else
-                    //{
-                    //    data.Rows.Add(ipAddress, "Unknown", "Offline");
-                    //}
-                    myPing.Dispose();
+                        //lbStatus.ForeColor = System.Drawing.Color.Green; //Set status label for current IP address
+                        //lbStatus.Text = "Scanning: " + ipAddress;
+                        //Log pinged IP address in listview
+                        //Grabs DNS information to obtain system info
+                        if (reply.Status == IPStatus.Success)
+                        {
+                            try
+                            {
+                                addr = IPAddress.Parse(ipAddress);
+                                host = Dns.GetHostEntry(addr);
+                                data.Rows.Add(addr, host.HostName, "Active");
+                            }
+                            catch
+                            {
+
+                                data.Rows.Add(IPAddress.Parse(ipAddress), "Unknown", "Active");
+                            }
+                        }
+                        //else
+                        //{
+                        //    data.Rows.Add(ipAddress, "Unknown", "Offline");
+                        //}
+                        myPing.Dispose();
+                    });
+                    myThread.Start();
                 }
 
                 startIP[3] = 1; //If 4th octet reaches 255, reset back to 1
             }
+            btnStop.Enabled = false;
+            button2.Enabled = true;
+            lbStatus.ForeColor = Color.Green;
+            lbStatus.Text = "Finish";
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -143,7 +141,7 @@ namespace PBL4
 
         private void trackbar_Scroll(object sender, ScrollEventArgs e)
         {
-            label7.Text = (trackbar.Value + 10).ToString() + "ms";
+            label7.Text = (trackbar.Value * 4 + 100).ToString() + "ms";
         }
 
         private static IPAddress GetSubNetMask(IPAddress address)
