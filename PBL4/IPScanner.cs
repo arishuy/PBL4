@@ -117,6 +117,7 @@ namespace PBL4
                         myPing.Dispose();
                     });
                     myThread.Start();
+                    myThread.Join(100);
                 }
 
                 startIP[3] = 1; //If 4th octet reaches 255, reset back to 1

@@ -33,17 +33,17 @@
             this.button3 = new System.Windows.Forms.Button();
             this.txtDomainName = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.tbdns = new System.Windows.Forms.TextBox();
+            this.tbdns = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2GradientPanel1
             // 
+            this.guna2GradientPanel1.Controls.Add(this.tbdns);
             this.guna2GradientPanel1.Controls.Add(this.label1);
             this.guna2GradientPanel1.Controls.Add(this.button3);
             this.guna2GradientPanel1.Controls.Add(this.txtDomainName);
             this.guna2GradientPanel1.Controls.Add(this.button2);
-            this.guna2GradientPanel1.Controls.Add(this.tbdns);
             this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.Gray;
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.Black;
@@ -92,12 +92,29 @@
             // 
             // tbdns
             // 
-            this.tbdns.Location = new System.Drawing.Point(376, 51);
+            this.tbdns.BackColor = System.Drawing.Color.Transparent;
+            this.tbdns.BorderRadius = 15;
+            this.tbdns.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbdns.DefaultText = "";
+            this.tbdns.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbdns.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbdns.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbdns.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbdns.FillColor = System.Drawing.Color.Silver;
+            this.tbdns.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbdns.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbdns.ForeColor = System.Drawing.Color.Black;
+            this.tbdns.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbdns.Location = new System.Drawing.Point(411, 24);
             this.tbdns.Multiline = true;
             this.tbdns.Name = "tbdns";
+            this.tbdns.PasswordChar = '\0';
+            this.tbdns.PlaceholderText = "";
+            this.tbdns.ReadOnly = true;
             this.tbdns.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbdns.Size = new System.Drawing.Size(384, 349);
-            this.tbdns.TabIndex = 9;
+            this.tbdns.SelectedText = "";
+            this.tbdns.Size = new System.Drawing.Size(320, 389);
+            this.tbdns.TabIndex = 14;
             // 
             // DNSQueryForm
             // 
@@ -121,6 +138,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txtDomainName;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox tbdns;
+        private Guna.UI2.WinForms.Guna2TextBox tbdns;
     }
 }
