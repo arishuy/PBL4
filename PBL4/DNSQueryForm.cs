@@ -138,7 +138,7 @@ namespace PBL4
             {
                 // Get 'IPHostEntry' object containing information like host name, IP addresses, aliases for a host.
                 //IPHostEntry hostInfo = Dns.GetHostByName(hostString);
-                IPHostEntry hostInfo = Dns.Resolve(hostString);
+                IPHostEntry hostInfo = Dns.GetHostEntry(hostString);
                 tbdns.Text = ("Host name : " + hostInfo.HostName);
                 tbdns.Text += Environment.NewLine;
                 tbdns.Text += ("IP address List : ");
