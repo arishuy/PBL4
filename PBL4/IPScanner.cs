@@ -70,7 +70,6 @@ namespace PBL4
             int[] endIP = Array.ConvertAll<string, int>(endIPString, int.Parse);
             Ping myPing;
             PingReply reply;
-            IPAddress addr;
             IPHostEntry host;
             progressBar.Minimum = 0;
             progressBar.Maximum = 1000;
@@ -105,7 +104,7 @@ namespace PBL4
                             {
                                 try
                                 {
-                                    addr = IPAddress.Parse(ipAddress);
+                                    IPAddress addr = IPAddress.Parse(ipAddress);
                                     host = Dns.GetHostEntry(addr);
                                     data.Rows.Add(addr, host.HostName, "Active");
                                 }
