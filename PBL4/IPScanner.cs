@@ -68,9 +68,7 @@ namespace PBL4
             int[] startIP = Array.ConvertAll<string, int>(startIPString, int.Parse); //Change string array to int array
             string[] endIPString = BA.ToString().Split('.');
             int[] endIP = Array.ConvertAll<string, int>(endIPString, int.Parse);
-            Ping myPing;
-            PingReply reply;
-            IPHostEntry host;
+            
             progressBar.Minimum = 0;
             progressBar.Maximum = 1000;
             //Loops through the IP range, maxing out at 255
@@ -82,6 +80,9 @@ namespace PBL4
                     { //4th octet loop
                         Thread myThread = new Thread(() =>
                         {
+                            IPHostEntry host;
+                            Ping myPing;
+                            PingReply reply;
                             string ipAddress = startIP[0] + "." + startIP[1] + "." + i + "." + y; //Convert IP array back into a string
                             string endIPAddress = endIP[0] + "." + endIP[1] + "." + endIP[2] + "." + endIP[3]; // +1 is so that the scanning stops at the correct range
 
@@ -119,6 +120,7 @@ namespace PBL4
                             //    data.Rows.Add(ipAddress, "Unknown", "Offline");
                             //}
                             myPing.Dispose();
+                           
                             
                         });
                         myThread.Start();
