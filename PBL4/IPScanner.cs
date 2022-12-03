@@ -15,6 +15,8 @@ namespace PBL4
     {
         DataTable data;
         List<Thread> threads = new List<Thread>();
+        static CancellationTokenSource ts = new CancellationTokenSource();
+        CancellationToken ct = ts.Token;
         public IPScanner()
         {
             InitializeComponent();
@@ -134,10 +136,14 @@ namespace PBL4
                         myThread.Start();
                         myThread.Join(timeout);
                         progressBar.Value++;
+                        if (ct.IsCancellationRequested)
+                        {
+                            return;
+                        }
                     }
                     startIP[3] = 1; //If 4th octet reaches 255, reset back to 1
                 }
-            });
+            },ct);
             progressBar.Value = 0;
             btnStop.Enabled = false;
             button2.Enabled = true;
@@ -147,6 +153,7 @@ namespace PBL4
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            ts.Cancel();
             foreach (Thread thread in threads)
             {
                 if (thread.IsAlive == true)
