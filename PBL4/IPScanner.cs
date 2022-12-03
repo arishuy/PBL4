@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Net;
@@ -13,7 +14,7 @@ namespace PBL4
     public partial class IPScanner : Form
     {
         DataTable data;
-        Thread myThread = null;
+        List<Thread> threads = new List<Thread>();
         public IPScanner()
         {
             InitializeComponent();
@@ -120,9 +121,16 @@ namespace PBL4
                             //    data.Rows.Add(ipAddress, "Unknown", "Offline");
                             //}
                             myPing.Dispose();
-                           
+                            try
+                            {
+                                BeginInvoke(new Action(() =>
+                                {
+                                    dataGridView1.Refresh();
+                                }));
+                            }catch (Exception ex) { }
                             
                         });
+                        threads.Add(myThread);
                         myThread.Start();
                         myThread.Join(timeout);
                         progressBar.Value++;
@@ -139,14 +147,17 @@ namespace PBL4
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            if (myThread.IsAlive == true)
+            foreach (Thread thread in threads)
             {
-                myThread.Abort();
-                btnStop.Enabled = false;
-                button2.Enabled = true;
-                lbStatus.ForeColor = Color.Red;
-                lbStatus.Text = "Scan Stopped";
+                if (thread.IsAlive == true)
+                {
+                    thread.Abort();
+                }
             }
+            btnStop.Enabled = false;
+            button2.Enabled = true;
+            lbStatus.ForeColor = Color.Red;
+            lbStatus.Text = "Scan Stopped";
         }
 
         private void trackbar_Scroll(object sender, ScrollEventArgs e)
