@@ -15,8 +15,7 @@ namespace PBL4
     {
         DataTable data;
         List<Thread> threads = new List<Thread>();
-        static CancellationTokenSource ts = new CancellationTokenSource();
-        CancellationToken ct = ts.Token;
+        CancellationTokenSource ts;
         public IPScanner()
         {
             InitializeComponent();
@@ -75,6 +74,7 @@ namespace PBL4
             progressBar.Minimum = 0;
             progressBar.Maximum = 1000;
             //Loops through the IP range, maxing out at 255
+            ts = new CancellationTokenSource();
             await Task.Run(() =>
             {
                 for (int i = startIP[2]; i <= endIP[2]; i++)
@@ -136,14 +136,14 @@ namespace PBL4
                         myThread.Start();
                         myThread.Join(timeout);
                         progressBar.Value++;
-                        if (ct.IsCancellationRequested)
+                        if (ts.Token.IsCancellationRequested)
                         {
                             return;
                         }
                     }
                     startIP[3] = 1; //If 4th octet reaches 255, reset back to 1
                 }
-            },ct);
+            },ts.Token);
             progressBar.Value = 0;
             btnStop.Enabled = false;
             button2.Enabled = true;
