@@ -26,65 +26,71 @@ namespace PBL4
         {
             String hostString = txtIPAddress.Text;
             tbdns.Text = "";
-            try
+            if (hostString == "")
             {
-                // Get 'IPHostEntry' object containing information like host name, IP addresses, aliases for a host.
-                IPHostEntry hostInfo = Dns.GetHostEntry(hostString);
-                tbdns.Text = ("Host name : ");
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += hostInfo.HostName;
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += Environment.NewLine;
-
-                if (hostInfo.AddressList.Length > 0)
+                MessageBox.Show("Please enter valid IPv4 address");
+            }
+            else
+            {
+                try
                 {
-                    tbdns.Text += ("List of IP addresses: ");
+                    // Get 'IPHostEntry' object containing information like host name, IP addresses, aliases for a host.
+                    IPHostEntry hostInfo = Dns.GetHostEntry(hostString);
+                    tbdns.Text = ("Host name : ");
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += hostInfo.HostName;
+                    tbdns.Text += Environment.NewLine;
                     tbdns.Text += Environment.NewLine;
 
-                    for (int index = 0; index < hostInfo.AddressList.Length; index++)
+                    if (hostInfo.AddressList.Length > 0)
                     {
-                        tbdns.Text += (hostInfo.AddressList[index]);
+                        tbdns.Text += ("List of IP addresses: ");
                         tbdns.Text += Environment.NewLine;
+
+                        for (int index = 0; index < hostInfo.AddressList.Length; index++)
+                        {
+                            tbdns.Text += (hostInfo.AddressList[index]);
+                            tbdns.Text += Environment.NewLine;
+                        }
                     }
+                    if (hostInfo.Aliases.Length > 0)
+                    {
+                        tbdns.Text += ("Aliases: ");
+                        tbdns.Text += Environment.NewLine;
+
+                        for (int index = 0; index < hostInfo.Aliases.Length; index++)
+                        {
+                            tbdns.Text += (hostInfo.Aliases[index]);
+                            tbdns.Text += Environment.NewLine;
+                        }
+                    }
+
                 }
-                if (hostInfo.Aliases.Length > 0)
+                catch (SocketException e0)
                 {
-                    tbdns.Text += ("Aliases: ");
+                    tbdns.Text = ("SocketException caught!!!");
                     tbdns.Text += Environment.NewLine;
-
-                    for (int index = 0; index < hostInfo.Aliases.Length; index++)
-                    {
-                        tbdns.Text += (hostInfo.Aliases[index]);
-                        tbdns.Text += Environment.NewLine;
-                    }
+                    tbdns.Text += ("Source : " + e0.Source);
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Message : " + e0.Message);
                 }
-
+                catch (ArgumentNullException e1)
+                {
+                    tbdns.Text = ("ArgumentNullException caught!!!");
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Source : " + e1.Source);
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Message : " + e1.Message);
+                }
+                catch (Exception e2)
+                {
+                    tbdns.Text = ("Exception caught!!!");
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Source : " + e2.Source);
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Message : " + e2.Message);
+                }
             }
-            catch (SocketException e0)
-            {
-                tbdns.Text = ("SocketException caught!!!");
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Source : " + e0.Source);
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Message : " + e0.Message);
-            }
-            catch (ArgumentNullException e1)
-            {
-                tbdns.Text = ("ArgumentNullException caught!!!");
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Source : " + e1.Source);
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Message : " + e1.Message);
-            }
-            catch (Exception e2)
-            {
-                tbdns.Text = ("Exception caught!!!");
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Source : " + e2.Source);
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Message : " + e2.Message);
-            }
-
         }
         /*tbdns.Text = "";
         try
@@ -130,88 +136,94 @@ namespace PBL4
         {
             String hostString = txtDomainName.Text;
             tbdns.Text = "";
-            try
+            if (hostString == "")
             {
-                // Get 'IPHostEntry' object containing information like host name, IP addresses, aliases for a host.
-                //IPHostEntry hostInfo = Dns.GetHostByName(hostString);
-                IPHostEntry hostInfo = Dns.GetHostEntry(hostString);
-                tbdns.Text = "Host name : ";
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += hostInfo.HostName;
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += Environment.NewLine;
-
-                tbdns.Text += ("List of IP addresses : ");
-                tbdns.Text += Environment.NewLine;
-
-                for (int index = 0; index < hostInfo.AddressList.Length; index++)
+                MessageBox.Show("Please enter valid domain name");
+            }
+            else
+            {
+                try
                 {
-                    tbdns.Text += (hostInfo.AddressList[index]);
+                    // Get 'IPHostEntry' object containing information like host name, IP addresses, aliases for a host.
+                    //IPHostEntry hostInfo = Dns.GetHostByName(hostString);
+                    IPHostEntry hostInfo = Dns.GetHostEntry(hostString);
+                    tbdns.Text = "Host name : ";
                     tbdns.Text += Environment.NewLine;
-                }
-                if (hostInfo.Aliases.Length > 0)
-                {
-                    tbdns.Text += ("Aliases: ");
+                    tbdns.Text += hostInfo.HostName;
+                    tbdns.Text += Environment.NewLine;
                     tbdns.Text += Environment.NewLine;
 
-                    for (int index = 0; index < hostInfo.Aliases.Length; index++)
+                    tbdns.Text += ("List of IP addresses : ");
+                    tbdns.Text += Environment.NewLine;
+
+                    for (int index = 0; index < hostInfo.AddressList.Length; index++)
                     {
-                        tbdns.Text += (hostInfo.Aliases[index]);
+                        tbdns.Text += (hostInfo.AddressList[index]);
                         tbdns.Text += Environment.NewLine;
                     }
-                }
+                    if (hostInfo.Aliases.Length > 0)
+                    {
+                        tbdns.Text += ("Aliases: ");
+                        tbdns.Text += Environment.NewLine;
+
+                        for (int index = 0; index < hostInfo.Aliases.Length; index++)
+                        {
+                            tbdns.Text += (hostInfo.Aliases[index]);
+                            tbdns.Text += Environment.NewLine;
+                        }
+                    }
 
 
-                /*IPHostEntry hostInfo = Dns.Resolve(hostString);
-                // Get the IP address list that resolves to the host names contained in the
-                // Alias property.
-                IPAddress[] address = hostInfo.AddressList;
-                // Get the alias names of the addresses in the IP address list.
-                String[] alias = hostInfo.Aliases;
+                    /*IPHostEntry hostInfo = Dns.Resolve(hostString);
+                    // Get the IP address list that resolves to the host names contained in the
+                    // Alias property.
+                    IPAddress[] address = hostInfo.AddressList;
+                    // Get the alias names of the addresses in the IP address list.
+                    String[] alias = hostInfo.Aliases;
 
-                tbdns.Text += ("Host name : " + hostInfo.HostName);
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("\nAliases : ");
-                tbdns.Text += Environment.NewLine;
-                for (int index = 0; index < alias.Length; index++)
-                {
-                    tbdns.Text += (alias[index]);
+                    tbdns.Text += ("Host name : " + hostInfo.HostName);
                     tbdns.Text += Environment.NewLine;
-                }
-                tbdns.Text += ("\nIP Address list :");
-                tbdns.Text += Environment.NewLine;
-                for (int index = 0; index < address.Length; index++)
-                {
-                    tbdns.Text += (address[index]);
+                    tbdns.Text += ("\nAliases : ");
                     tbdns.Text += Environment.NewLine;
-                }*/
+                    for (int index = 0; index < alias.Length; index++)
+                    {
+                        tbdns.Text += (alias[index]);
+                        tbdns.Text += Environment.NewLine;
+                    }
+                    tbdns.Text += ("\nIP Address list :");
+                    tbdns.Text += Environment.NewLine;
+                    for (int index = 0; index < address.Length; index++)
+                    {
+                        tbdns.Text += (address[index]);
+                        tbdns.Text += Environment.NewLine;
+                    }*/
 
+                }
+                catch (SocketException e0)
+                {
+                    tbdns.Text = ("SocketException caught!!!");
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Source : " + e0.Source);
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Message : " + e0.Message);
+                }
+                catch (ArgumentNullException e1)
+                {
+                    tbdns.Text = ("ArgumentNullException caught!!!");
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Source : " + e1.Source);
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Message : " + e1.Message);
+                }
+                catch (Exception e2)
+                {
+                    tbdns.Text = ("Exception caught!!!");
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Source : " + e2.Source);
+                    tbdns.Text += Environment.NewLine;
+                    tbdns.Text += ("Message : " + e2.Message);
+                }
             }
-            catch (SocketException e0)
-            {
-                tbdns.Text = ("SocketException caught!!!");
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Source : " + e0.Source);
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Message : " + e0.Message);
-            }
-            catch (ArgumentNullException e1)
-            {
-                tbdns.Text = ("ArgumentNullException caught!!!");
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Source : " + e1.Source);
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Message : " + e1.Message);
-            }
-            catch (Exception e2)
-            {
-                tbdns.Text = ("Exception caught!!!");
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Source : " + e2.Source);
-                tbdns.Text += Environment.NewLine;
-                tbdns.Text += ("Message : " + e2.Message);
-            }
-
         }
     }
    
