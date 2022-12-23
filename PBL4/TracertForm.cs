@@ -16,6 +16,7 @@ namespace PBL4
         public TracertForm()
         {
             InitializeComponent();
+            label7.Text = (trackbar.Value * 4 + 100).ToString() + "ms";
             data = new DataTable();
             dataGridView1.DataSource = data;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -29,6 +30,7 @@ namespace PBL4
             try
             {
                 var progress = new Progress<TracertEntry>();
+                int timeout = trackbar.Value * 4 + 100;
                 progress.ProgressChanged += (s, item) =>
                 {
                     data.Rows.Add(item.HopID, item.Address, item.Hostname, item.ReplyTime, item.ReplyStatus);
@@ -38,7 +40,7 @@ namespace PBL4
                 {
                     try
                     {
-                        GetItemsAndReport(progress, textBox1.Text, Convert.ToInt32(txtMaxHops.Text), 100);
+                        GetItemsAndReport(progress, textBox1.Text, Convert.ToInt32(txtMaxHops.Text), timeout);
                     }
                     catch (Exception ex)
                     {
@@ -121,6 +123,10 @@ namespace PBL4
                 pingReplyTime.Reset();
             }
             while (reply.Status != IPStatus.Success && pingOptions.Ttl <= maxHops);
+        }
+        private void trackbar_Scroll(object sender, ScrollEventArgs e)
+        {
+            label7.Text = (trackbar.Value * 4 + 100).ToString() + "ms";
         }
 
     }
