@@ -26,7 +26,7 @@ namespace PBL4
         {
             String hostString = txtIPAddress.Text;
             tbdns.Text = "";
-            if (hostString == "")
+            if (hostString == "" || !ValidateIPv4(hostString))
             {
                 MessageBox.Show("Please enter valid IPv4 address");
             }
@@ -224,6 +224,24 @@ namespace PBL4
                     tbdns.Text += ("Message : " + e2.Message);
                 }
             }
+        }
+
+        public bool ValidateIPv4(string ipString)
+        {
+            if (String.IsNullOrWhiteSpace(ipString))
+            {
+                return false;
+            }
+
+            string[] splitValues = ipString.Split('.');
+            if (splitValues.Length != 4)
+            {
+                return false;
+            }
+
+            byte tempForParsing;
+
+            return splitValues.All(r => byte.TryParse(r, out tempForParsing));
         }
     }
    
